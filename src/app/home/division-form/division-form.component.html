@@ -1,0 +1,41 @@
+    <form nz-form [formGroup]="divisionForm" (ngSubmit)="submitForm()">
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Nonbre</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback nzValidatingTip="Validando...">
+          <input nz-input formControlName="nombre" placeholder="Ingrese nombre de division" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Colaboradores</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback>
+          <input nz-input formControlName="colaboradores" placeholder="colaboradores" type="number" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Nivel</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback nzErrorTip="Ingrese el nivel!">
+          <input nz-input type="number" formControlName="nivel" />
+        </nz-form-control>
+      </nz-form-item>
+    <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Embajador</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback nzErrorTip="Ingrese el nombre del embajador">
+          <input nz-input type="text" formControlName="embajador" />
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item>
+        <nz-form-label [nzSpan]="7" nzRequired>Padre</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzHasFeedback nzErrorTip="Ingrese el nombre del embajador">
+          <input nz-input type="number" formControlName="padre" />
+        </nz-form-control>
+    </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-control [nzOffset]="7" [nzSpan]="12">
+          <button nz-button nzType="primary" [disabled]="!divisionForm.valid">Submit</button>
+          <button nz-button (click)="resetForm($event)">Reset</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>

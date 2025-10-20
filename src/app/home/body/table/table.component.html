@@ -1,1 +1,55 @@
-<p>table works!</p>
+    <div class="send-request">
+      <button
+        nz-button
+        nzType="default"
+        [nzLoading]="loading"
+        (click)="sendRequest()"
+      >
+        Listado
+      </button>
+      <button
+        nz-button
+        [disabled]="true"
+        nzType="default"
+        [nzLoading]="loading"
+        (click)="sendRequest()"
+      >
+        Árbol
+      </button>
+    </div>
+    <nz-table
+      #rowSelectionTable
+      nzShowPagination
+      nzShowSizeChanger
+      [nzData]="listOfData"
+      (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+    >
+      <thead>
+        <tr>
+          <th
+            [nzChecked]="checked"
+            [nzIndeterminate]="indeterminate"
+            nzLabel="Select all"
+            (nzCheckedChange)="onAllChecked($event)"
+          ></th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (data of rowSelectionTable.data; track data) {
+          <tr>
+            <td
+              [nzChecked]="setOfCheckedId.has(data.id)"
+              [nzDisabled]="data.disabled"
+              [nzLabel]="data.name"
+              (nzCheckedChange)="onItemChecked(data.id, $event)"
+            ></td>
+            <td>{{ data.name }}</td>
+            <td>{{ data.age }}</td>
+            <td>{{ data.address }}</td>
+          </tr>
+        }
+      </tbody>
+    </nz-table>

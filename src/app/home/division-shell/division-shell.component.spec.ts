@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TbControlComponent } from './tb-control.component';
+import { DivisionShellComponent } from './division-shell.component';
 
-describe('TbControlComponent', () => {
-  let component: TbControlComponent;
-  let fixture: ComponentFixture<TbControlComponent>;
+describe('DivisionShellComponent', () => {
+  let component: DivisionShellComponent;
+  let fixture: ComponentFixture<DivisionShellComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TbControlComponent]
+      imports: [DivisionShellComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TbControlComponent);
+    fixture = TestBed.createComponent(DivisionShellComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
