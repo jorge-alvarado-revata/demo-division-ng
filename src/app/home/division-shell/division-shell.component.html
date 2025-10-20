@@ -3,7 +3,11 @@
 <nz-icon nzType="left" nzTheme="outline" />
 </button>
 <app-division-form
-(onSave)="onSave($event)">
+(onSave)="onSave($event)"
+(onSearch)="onSearch($event)"
+[listaDivisiones]="listaDivisiones"
+>
+
 </app-division-form>
             
 </nz-card>

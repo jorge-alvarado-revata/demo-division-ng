@@ -48,4 +48,9 @@ export class DivisionService {
     const path = environment.path.delete;
     return this.httpService.sendDelete(path, id);
   }
+
+  filtro(search: string){
+    const path = environment.path.filtro;
+    return this.httpService.sendSearch(path, search)
+  }
 }

@@ -16,6 +16,7 @@ import { CreateDivisionDto } from '../../tipos/CreateDivisionDto';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { SelDivision } from '../../tipos/SelDivision';
 
 @Component({
   selector: 'app-division-shell',
@@ -23,12 +24,35 @@ import { NzCardModule } from 'ng-zorro-antd/card';
   templateUrl: './division-shell.component.html',
   styleUrl: './division-shell.component.scss'
 })
-export class DivisionShellComponent {
+export class DivisionShellComponent  {
+
+  listaDivisiones: SelDivision[] = [];
 
   // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(private divisionService: DivisionService, private location: Location){
 
   }
+
+  private SearchDivision(search: string){
+    this.divisionService.filtro(search)
+    .subscribe(
+      {
+          next:(val:unknown)=>{
+          if (val){
+            if (Array.isArray(val) && val.length > 0){
+              this.listaDivisiones = val;
+            } 
+            console.log('se guardo la division:', val);
+          }
+        },
+        error:(error)=>{
+          console.log('error backend:',error);
+
+        }
+      }
+    )
+  }
+
 
   private SaveDivision(division: CreateDivisionDto){
     this.divisionService.agrega(division)
@@ -49,6 +73,10 @@ export class DivisionShellComponent {
 
   onSave(division: unknown){
     this.SaveDivision(division as CreateDivisionDto);
+  }
+
+  onSearch(search: string ){
+    this.SearchDivision(search)
   }
 
   regresar(){

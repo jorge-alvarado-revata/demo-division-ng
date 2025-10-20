@@ -82,6 +82,16 @@ public sendGet(entidad:string): Observable<unknown>{
    );
 }
 
+
+public sendSearch(entidad: string, search: string): Observable<unknown>{
+    const SERVER_FINAL:string = this.SERVER_URL + `/${entidad}?nombre=${search}`; 
+      return this.http.get<unknown>(SERVER_FINAL)
+   .pipe(
+    shareReplay(1),
+    catchError(this.handleError)
+   );
+}
+
 public sendGetById(entidad:string, id: number): Observable<unknown>{
 
   const SERVER_FINAL:string = this.SERVER_URL + `/${entidad}/${id}/`; 

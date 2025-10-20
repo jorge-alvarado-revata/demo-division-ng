@@ -8,6 +8,7 @@ export const environment = {
         setpadre: 'division/setpadre',
         update: 'division/update',
         retira: 'division/padre/retira',
-        delete: 'division/delete'
+        delete: 'division/delete',
+        filtro: 'division/filtro'
     } 
 };
